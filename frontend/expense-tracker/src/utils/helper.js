@@ -1,4 +1,5 @@
 //helper.jsx
+import moment from 'moment';
 
 export const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -29,4 +30,26 @@ export const addThousandsSeparator = (num) => {
   return fractionalPart
   ? `${formattedInteger}.${fractionalPart}`
   : formattedInteger;
+};
+
+
+export const prepareExpenseBarChartData = (data = []) => {
+  const chartData = data.map((item) => ({
+    category: item?.category,
+    amount: item?.amount,
+  }))
+
+  return chartData;
+};
+
+export const prepareIncomeBarChartData = (data = []) => {
+  const sortedData = [...data].sort((a,b) => new Date(a.date) - new Date(b.date));
+
+  const chartData = sortedData.map((item) => ({
+    month: moment(item?.date).format('DD MM'),
+    amount: item?.amount,
+    source: item?.source,
+  }));
+
+  return chartData;
 };
