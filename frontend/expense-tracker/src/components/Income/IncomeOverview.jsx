@@ -13,7 +13,9 @@ const IncomeOverview = ({ transactions, onAddIncome }) => {
 
         return () => {};
     }, [transactions]);
- 
+      console.log('transactions', transactions);
+      
+    console.log('chartData', chartData);
     
   return (
     <div className='card'>
@@ -23,9 +25,9 @@ const IncomeOverview = ({ transactions, onAddIncome }) => {
                 <p className='text-xs text-gray-400 mt-0.5'>
                     Track your earning over time and analyze your income trends.
                 </p>
-            </div>
+            </div> 
 
-            <button className='add-btn' onClick={onAddIncome}>
+            <button className='add-btn' onClick=    {onAddIncome}>
                 <LuPlus className='text-lg'/>
                 Add Income
             </button>
